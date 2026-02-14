@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Rhiannon ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap');
+
+        :root {
+            --pink: #ff69b4;
+            --deep-pink: #ff1493;
+            --light-pink: #ffb6c1;
+            --red: #ff2d55;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #ffe4e9, #ff9eb8);
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* ===== ÉCRAN 1 : PROPOSITION ===== */
+        #proposal {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 1s ease;
+        }
+
+        .proposal-container {
+            text-align: center;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-width: 90%;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            color: #fff;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            font-size: 2rem;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            font-family: 'Playfair Display', serif;
+        }
+
+        #yes-btn {
+            background: linear-gradient(45deg, #ff69b4, #ff2d55);
+            color: white;
+            transform-origin: center;
+        }
+
+        #yes-btn:hover {
+            transform: scale(1.1) !important;
+            box-shadow: 0 15px 35px rgba(255,45,85,0.6);
+        }
+
+        #no-btn {
+            background: #fff;
+            color: #555;
+        }
+
+        #no-btn:hover {
+            background: #ff9eb8;
+            color: white;
+        }
+
+        /* ===== ÉCRAN 2 : CÉLÉBRATION ===== */
+        #celebration {
+            display: none;
+            position: absolute;
+            inset: 0;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px;
+            overflow: hidden;
+        }
+
+        /* Coeurs qui tombent */
+        .falling-hearts {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .falling-heart {
+            position: absolute;
+            top: -60px;
+            font-size: 30px;
+            animation: fall linear infinite;
+            z-index: 2;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+            }
+        }
+
+        /* Marquee du poème */
+        .marquee {
+            width: 100%;
+            background: rgba(255,255,255,0.85);
+            padding: 15px 0;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            z-index: 5;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #c71585;
+            padding-right: 100%;
+            animation: scroll 45s linear infinite;
+        }
+
+        @keyframes scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Arbre d’amour */
+        .tree-container {
+            position: relative;
+            width: 320px;
+            height: 420px;
+            z-index: 4;
+            margin: 20px 0;
+        }
+
+        .trunk {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 52px;
+            height: 170px;
+            background: linear-gradient(#8B4513, #A0522D);
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .crown {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 280px;
+        }
+
+        .heart-leaf {
+            position: absolute;
+            font-size: 42px;
+            animation: pulse 2.5s infinite ease-in-out;
+            filter: drop-shadow(0 5px 10px rgba(255,45,85,0.6));
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50%      { transform: scale(1.25); }
+        }
+
+        /* Timer */
+        .timer {
+            background: rgba(255,255,255,0.9);
+            color: #c71585;
+            padding: 25px 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            text-align: center;
+            z-index: 5;
+            min-width: 380px;
+            font-size: 1.6rem;
+            line-height: 1.4;
+        }
+
+        .timer p {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        #time-display {
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            font-size: 2.1rem;
+        }
+
+        .title-celebration {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.8rem;
+            text-align: center;
+            margin: 20px 0 10px;
+            color: white;
+            text-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ÉCRAN 1 : PROPOSITION -->
+    <div id="proposal">
+        <div class="proposal-container">
+            <h1>Rhiannon ❤️</h1>
+            <p class="subtitle">Veux-tu être ma Valentine ?</p>
+            
+            <div class="buttons">
+                <button id="yes-btn">Oui ❤️</button>
+                <button id="no-btn">Non</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ÉCRAN 2 : CÉLÉBRATION -->
+    <div id="celebration">
+        <!-- Coeurs qui tombent -->
+        <div class="falling-hearts" id="hearts-container"></div>
+
+        <!-- Titre -->
+        <div class="title-celebration">Oui ! Tu es ma Valentine pour toujours !</div>
+
+        <!-- Poème qui défile -->
+        <div class="marquee">
+            <div class="marquee-content">
+                Rhiannon, mon amour éternel • Depuis ce 17 mai 2025 où nos cœurs se sont trouvés, chaque jour est plus beau grâce à toi • Ton sourire illumine ma vie, ton rire est ma mélodie préférée • Je t’aime plus fort chaque seconde • Joyeuse Saint-Valentin, ma Valentine, mon tout, pour l’éternité • 
+                Rhiannon, mon amour éternel • Depuis ce 17 mai 2025 où nos cœurs se sont trouvés, chaque jour est plus beau grâce à toi • Ton sourire illumine ma vie, ton rire est ma mélodie préférée • Je t’aime plus fort chaque seconde • Joyeuse Saint-Valentin, ma Valentine, mon tout, pour l’éternité • 
+            </div>
+        </div>
+
+        <!-- Arbre d’amour -->
+        <div class="tree-container">
+            <!-- Tronc -->
+            <div class="trunk"></div>
+            
+            <!-- Couronne de cœurs -->
+            <div class="crown">
+                <!-- Rangée 1 (haut) -->
+                <div class="heart-leaf" style="top: 15px; left: 110px; font-size: 38px; animation-delay: 0.2s;">❤️</div>
+                <div class="heart-leaf" style="top: 28px; left: 170px; font-size: 34px; animation-delay: 0.8s; color: #ffb6c1;">❤️</div>
+                
+                <!-- Rangée 2 -->
+                <div class="heart-leaf" style="top: 65px; left: 55px; font-size: 48px; animation-delay: 0.4s; color: #ff2d55;">❤️</div>
+                <div class="heart-leaf" style="top: 55px; left: 125px; font-size: 52px; animation-delay: 1.1s;">❤️</div>
+                <div class="heart-leaf" style="top: 70px; left: 195px; font-size: 45px; animation-delay: 0.6s; color: #ffb6c1;">❤️</div>
+                
+                <!-- Rangée 3 (plus large) -->
+                <div class="heart-leaf" style="top: 115px; left: 30px; font-size: 50px; animation-delay: 1.4s;">❤️</div>
+                <div class="heart-leaf" style="top: 105px; left: 85px; font-size: 42px; animation-delay: 0.3s; color: #ff69b4;">❤️</div>
+                <div class="heart-leaf" style="top: 120px; left: 150px; font-size: 55px; animation-delay: 0.9s;">❤️</div>
+                <div class="heart-leaf" style="top: 110px; left: 210px; font-size: 46px; animation-delay: 1.6s; color: #ff2d55;">❤️</div>
+                
+                <!-- Rangée 4 (base) -->
+                <div class="heart-leaf" style="top: 170px; left: 20px; font-size: 44px; animation-delay: 0.7s; color: #ffb6c1;">❤️</div>
+                <div class="heart-leaf" style="top: 165px; left: 75px; font-size: 51px; animation-delay: 1.3s;">❤️</div>
+                <div class="heart-leaf" style="top: 180px; left: 130px; font-size: 48px; animation-delay: 0.5s; color: #ff69b4;">❤️</div>
+                <div class="heart-leaf" style="top: 172px; left: 185px; font-size: 53px; animation-delay: 1.8s;">❤️</div>
+                <div class="heart-leaf" style="top: 168px; left: 240px; font-size: 39px; animation-delay: 0.1s; color: #ff2d55;">❤️</div>
+            </div>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer">
+            <p>Depuis notre premier soir…</p>
+            <div id="time-display">0 mois 0 jours 0 heures 0 minutes 0 secondes</div>
+        </div>
+    </div>
+
+    <script>
+        // Boutons
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const proposal = document.getElementById('proposal');
+        const celebration = document.getElementById('celebration');
+
+        let clickCount = 0;
+        const noMessages = [
+            "Non",
+            "Tu es sûre ?",
+            "Réfléchis bien…",
+            "Vraiment ?",
+            "Allez, dis oui !",
+            "Tu vas me briser le cœur 💔",
+            "S’il te plaît ❤️",
+            "Pense à tous nos moments…",
+            "C’est la bonne réponse 😉",
+            "Tu ne peux pas résister à ça !",
+            "Ok… maintenant oui ?"
+        ];
+
+        // Comportement du bouton Non
+        noBtn.addEventListener('click', () => {
+            clickCount++;
+            
+            if (clickCount < noMessages.length) {
+                noBtn.textContent = noMessages[clickCount];
+            } else {
+                noBtn.textContent = "😢";
+                noBtn.style.opacity = "0.4";
+                noBtn.style.transform = "scale(0.7)";
+            }
+
+            // Grossissement progressif du Oui
+            let scale = Math.min(1 + clickCount * 0.35, 9);
+            yesBtn.style.transition = "transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55)";
+            yesBtn.style.transform = `scale(${scale})`;
+        });
+
+        // Quand elle clique sur Oui
+        yesBtn.addEventListener('click', () => {
+            proposal.style.opacity = "0";
+            
+            setTimeout(() => {
+                proposal.style.display = "none";
+                celebration.style.display = "flex";
+                
+                // Lancer les animations
+                createFallingHearts();
+                startTimer();
+            }, 800);
+        });
+
+        // ===== TIMER =====
+        const startDate = new Date(2025, 4, 17, 22, 0, 0); // 17 mai 2025 à 22h
+
+        function updateTimer() {
+            const now = new Date();
+            let diffMs = now - startDate;
+
+            if (diffMs < 0) {
+                document.getElementById('time-display').textContent = "Bientôt notre anniversaire…";
+                return;
+            }
+
+            // Calcul calendrier précis
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
+            let days = now.getDate() - startDate.getDate();
+            let hours = now.getHours() - startDate.getHours();
+            let minutes = now.getMinutes() - startDate.getMinutes();
+            let seconds = now.getSeconds() - startDate.getSeconds();
+
+            // Ajustements
+            if (seconds < 0) { minutes--; seconds += 60; }
+            if (minutes < 0) { hours--; minutes += 60; }
+            if (hours < 0) { days--; hours += 24; }
+            if (days < 0) {
+                months--;
+                const prevMonthLastDay = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+                days += prevMonthLastDay;
+            }
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            let text = '';
+            if (years > 0) text += `${years} an${years > 1 ? 's' : ''} `;
+            text += `${months} mois ${days} jour${days > 1 ? 's' : ''} `;
+            text += `${hours} heure${hours > 1 ? 's' : ''} `;
+            text += `${minutes} minute${minutes > 1 ? 's' : ''} `;
+            text += `${seconds} seconde${seconds > 1 ? 's' : ''}`;
+
+            document.getElementById('time-display').textContent = text;
+        }
+
+        function startTimer() {
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        // ===== CŒURS QUI TOMBENT =====
+        function createFallingHearts() {
+            const container = document.getElementById('hearts-container');
+            const colors = ['#ff69b4', '#ff1493', '#ffb6c1', '#ff2d55', '#ff8da1'];
+
+            for (let i = 0; i < 60; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'falling-heart';
+                heart.textContent = '❤️';
+                
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 28 + 22) + 'px';
+                heart.style.animationDuration = (Math.random() * 9 + 9) + 's';
+                heart.style.animationDelay = '-' + (Math.random() * 18) + 's';
+                heart.style.opacity = Math.random() * 0.7 + 0.4;
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                container.appendChild(heart);
+            }
+        }
+
+        // Petite touche : le bouton Oui devient encore plus gros si on clique longtemps sur Non
+        setInterval(() => {
+            if (clickCount > 8 && yesBtn.style.transform.includes('9')) {
+                yesBtn.style.fontSize = '4rem';
+            }
+        }, 300);
+    </script>
+</body>
+</html>
