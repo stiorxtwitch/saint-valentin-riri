@@ -3,45 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pour Rhiannon ❤️</title>
+  <title>Pour Rhiannon ❤️ – 14 février 2026</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --pink: #ffe6f0;
-      --rose: #ff69b4;
-      --deep: #e91e63;
+      --pink-soft: #fff0f5;
+      --rose:     #ff69b4;
+      --deep-rose:#e91e63;
+      --light:    #ffb6c1;
+      --corail:   #ff8da1;
+      --rouge:    #ff2d55;
+      --trunk:    #5d4037;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
       height: 100vh;
-      background: linear-gradient(#fff0f5, #ffe6f0);
+      background: linear-gradient(135deg, #fff5f8, #ffe4e9);
       font-family: 'Playfair Display', serif;
       color: white;
       overflow: hidden;
       position: relative;
     }
 
-    /* Cœurs qui tombent partout */
-    .rain {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
+    /* Cœurs qui tombent en fond */
+    .rain { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
     .heart-rain {
       position: absolute;
-      top: -50px;
-      font-size: 28px;
+      top: -60px;
+      font-size: 24px;
       animation: fall linear infinite;
-      filter: drop-shadow(0 4px 8px rgba(255,105,180,0.4));
+      opacity: 0.7;
     }
     @keyframes fall {
-      to { transform: translateY(110vh) rotate(720deg); }
+      to { transform: translateY(120vh) rotate(900deg); }
     }
 
-    /* Écran 1 – Proposition */
+    /* Écran 1 */
     #proposal {
       position: fixed;
       inset: 0;
@@ -49,57 +49,45 @@
       align-items: center;
       justify-content: center;
       z-index: 30;
-      background: rgba(255,240,245,0.95);
-      transition: opacity 1s;
+      background: rgba(255,245,248,0.92);
+      transition: opacity 0.9s ease;
     }
-    .box {
-      text-align: center;
+    .proposal-box {
       background: white;
-      color: #333;
-      padding: 60px 50px;
-      border-radius: 40px;
-      box-shadow: 0 30px 80px rgba(233,30,99,0.25);
-      max-width: 420px;
+      color: #444;
+      padding: 5rem 4.5rem;
+      border-radius: 36px;
+      box-shadow: 0 25px 70px rgba(233,30,99,0.22);
+      text-align: center;
+      max-width: 90%;
     }
-    h1 { 
+    h1 {
       font-family: 'Dancing Script', cursive;
-      font-size: 5.8rem;
-      color: var(--deep);
-      margin-bottom: 10px;
+      font-size: 6.2rem;
+      color: var(--deep-rose);
+      margin-bottom: 0.8rem;
     }
-    .question {
-      font-size: 2.3rem;
-      margin: 30px 0 50px;
-      color: #555;
-    }
-    .btns {
-      display: flex;
-      gap: 30px;
-      justify-content: center;
-    }
+    .question { font-size: 2.4rem; margin: 2rem 0 3.5rem; }
+    .btns { display: flex; gap: 3.5rem; justify-content: center; flex-wrap: wrap; }
     button {
       font-size: 2.4rem;
-      padding: 18px 48px;
+      padding: 1.1rem 3.8rem;
       border: none;
-      border-radius: 50px;
+      border-radius: 999px;
       cursor: pointer;
-      font-weight: 600;
-      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      transition: all 0.45s cubic-bezier(0.34,1.56,0.64,1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     }
     #yes-btn {
-      background: linear-gradient(45deg, #ff69b4, #ff2d55);
+      background: linear-gradient(135deg, var(--rose), var(--deep-rose));
       color: white;
       transform-origin: center;
     }
-    #yes-btn:hover { transform: scale(1.15); }
-    #no-btn {
-      background: #fff;
-      color: #444;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    #no-btn:hover { background: #ffb6c1; color: white; }
+    #yes-btn:hover { transform: scale(1.14); }
+    #no-btn { background: white; color: #555; }
+    #no-btn:hover { background: var(--light); color: white; }
 
-    /* Écran 2 – Célébration (style de ta capture) */
+    /* Écran 2 */
     #celebration {
       display: none;
       position: fixed;
@@ -107,134 +95,162 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 40px 20px 30px;
+      padding: 3rem 1rem 4rem;
       z-index: 20;
     }
 
-    .big-title {
+    .title {
       font-family: 'Dancing Script', cursive;
-      font-size: 5.2rem;
+      font-size: 5.4rem;
       text-align: center;
       color: white;
-      text-shadow: 0 8px 25px rgba(0,0,0,0.35);
-      line-height: 0.95;
-      margin-bottom: 15px;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      line-height: 0.92;
       z-index: 10;
+      margin-bottom: 1rem;
     }
 
     .marquee {
       width: 100%;
-      max-width: 920px;
-      background: rgba(255,255,255,0.92);
-      color: var(--deep);
-      padding: 16px 0;
-      border-radius: 50px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      max-width: 1000px;
+      background: rgba(255,255,255,0.9);
+      color: var(--deep-rose);
+      padding: 1.2rem 0;
+      border-radius: 999px;
+      box-shadow: 0 12px 45px rgba(0,0,0,0.18);
       overflow: hidden;
       white-space: nowrap;
       z-index: 12;
     }
-    .marquee-inner {
+    .marquee-content {
       display: inline-block;
       font-family: 'Dancing Script', cursive;
-      font-size: 2.35rem;
+      font-size: 2.4rem;
       padding-left: 100%;
-      animation: scroll 48s linear infinite;
+      animation: scroll 55s linear infinite;
     }
-    @keyframes scroll { to { transform: translateX(-50%); } }
+    @keyframes scroll { to { transform: translateX(-200%); } }
 
-    /* Arbre amélioré (style 3D comme sur l’image) */
-    .tree {
+    /* Arbre stylisé façon image */
+    .tree-container {
       position: relative;
-      width: 380px;
-      height: 460px;
+      width: 520px;
+      height: 580px;
       z-index: 8;
-      margin: 20px 0;
-      filter: drop-shadow(0 30px 60px rgba(139,0,86,0.4));
+      margin: 1.5rem 0;
+      filter: drop-shadow(0 35px 70px rgba(100,0,60,0.35));
     }
+
+    /* Tronc courbé */
     .trunk {
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 68px;
-      height: 210px;
-      background: linear-gradient(#5d4037, #8d5524);
-      border-radius: 12px;
-      box-shadow: inset 12px 0 20px rgba(0,0,0,0.5);
+      width: 90px;
+      height: 320px;
+      background: linear-gradient(to right, #4a2c1f, #6d4c41, #8d5524);
+      border-radius: 60px 40px 0 0 / 140px 100px 0 0;
+      box-shadow: inset 15px 0 30px rgba(0,0,0,0.5);
     }
-    .crown {
+
+    /* Branches principales (simulées avec pseudo-éléments) */
+    .branches {
       position: absolute;
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 360px;
-      height: 360px;
+      inset: 0;
+    }
+    .branch {
+      position: absolute;
+      background: linear-gradient(to right, #6d4c41, #8d5524);
+      border-radius: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .b1 { top: 80px;  left: 40%; width: 220px; height: 28px; transform: rotate(-35deg); }
+    .b2 { top: 120px; left: 55%; width: 260px; height: 24px; transform: rotate(30deg);  }
+    .b3 { top: 180px; left: 35%; width: 180px; height: 22px; transform: rotate(-50deg); }
+    .b4 { top: 220px; left: 60%; width: 200px; height: 20px; transform: rotate(45deg);  }
+    .b5 { top: 260px; left: 45%; width: 150px; height: 18px; transform: rotate(-20deg); }
+
+    /* Zone des cœurs */
+    .hearts-cloud {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
     }
     .heart {
       position: absolute;
-      font-size: 52px;
-      animation: pulse 2.8s infinite ease-in-out;
-      filter: drop-shadow(0 6px 12px rgba(255,45,85,0.6));
-      transition: transform 0.3s;
+      font-size: 38px;
+      animation: gentle 6s infinite ease-in-out;
+      transform-origin: center;
+      filter: drop-shadow(0 4px 10px rgba(255,20,100,0.5));
     }
-    .heart:hover { transform: scale(1.3) rotate(10deg); }
-
-    @keyframes pulse {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.22); }
+    @keyframes gentle {
+      0%,100% { transform: scale(1) translateY(0); }
+      50%     { transform: scale(1.15) translateY(-6px); }
     }
 
-    /* Timer comme sur l’image */
-    .timer-box {
-      background: white;
-      color: var(--deep);
-      padding: 22px 50px;
-      border-radius: 30px;
-      box-shadow: 0 15px 50px rgba(0,0,0,0.22);
-      text-align: center;
-      min-width: 420px;
-      z-index: 12;
-    }
-    .timer-box .label {
-      font-size: 1.35rem;
-      opacity: 0.85;
-      margin-bottom: 8px;
-    }
-    #timer {
-      font-size: 2.35rem;
-      font-weight: 700;
-    }
-
-    /* Musique très discrète */
-    #spotify {
-      position: fixed;
-      bottom: 15px;
-      right: 15px;
-      width: 140px;
-      height: 60px;
-      opacity: 0.07;
-      z-index: 50;
+    /* Traînée de cœurs qui s’envole */
+    .trail {
+      position: absolute;
+      top: 140px;
+      right: -80px;
+      width: 600px;
+      height: 400px;
       pointer-events: none;
+    }
+    .trail-heart {
+      position: absolute;
+      font-size: 22px;
+      animation: fly-trail 18s linear infinite;
+      opacity: 0.9;
+    }
+    @keyframes fly-trail {
+      0%   { transform: translate(0,0) rotate(0deg); opacity: 0.9; }
+      100% { transform: translate(-680px, 280px) rotate(720deg); opacity: 0; }
+    }
+
+    /* Timer */
+    .timer {
+      background: rgba(255,255,255,0.94);
+      color: var(--deep-rose);
+      padding: 1.8rem 4rem;
+      border-radius: 30px;
+      box-shadow: 0 18px 55px rgba(0,0,0,0.2);
+      text-align: center;
+      min-width: 460px;
+      z-index: 12;
+      font-size: 2rem;
+    }
+    .timer .since { font-size: 1.4rem; opacity: 0.9; margin-bottom: 0.6rem; }
+    #time { font-weight: 600; }
+
+    /* Musique */
+    #spotify-bg {
+      position: fixed;
+      bottom: 12px; right: 12px;
+      width: 160px; height: 70px;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 40;
     }
   </style>
 </head>
 <body>
 
-  <!-- Cœurs qui tombent -->
+  <!-- Fond cœurs qui tombent -->
   <div class="rain" id="rain"></div>
 
-  <!-- Musique -->
-  <div id="spotify">
+  <!-- Musique ambiance -->
+  <div id="spotify-bg">
     <iframe src="https://open.spotify.com/embed/track/6G9YlbU3ByPJQvOFDRdwyM?utm_source=generator" 
-            width="100%" height="60" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+            width="100%" height="70" frameborder="0" allow="autoplay; encrypted-media"></iframe>
   </div>
 
-  <!-- Écran 1 -->
+  <!-- Écran demande -->
   <div id="proposal">
-    <div class="box">
+    <div class="proposal-box">
       <h1>Rhiannon</h1>
-      <p class="question">Veux-tu être ma Valentine ?</p>
+      <div class="question">Veux-tu être ma Valentine ?</div>
       <div class="btns">
         <button id="yes-btn">Oui ❤️</button>
         <button id="no-btn">Non</button>
@@ -242,118 +258,133 @@
     </div>
   </div>
 
-  <!-- Écran 2 (exactement le style de ta capture) -->
+  <!-- Écran final -->
   <div id="celebration">
-    <div class="big-title">Oui...<br>Tu es ma Valentine<br>pour toujours</div>
+
+    <div class="title">Oui…<br>Tu es ma Valentine<br>pour toujours</div>
 
     <div class="marquee">
-      <div class="marquee-inner">
-        Rhiannon, mon amour éternel • Depuis ce 17 mai 2025 où nos cœurs se sont trouvés, chaque jour est plus beau grâce à toi • Ton sourire illumine ma vie, ton rire est ma mélodie préférée • Je t’aime plus fort chaque seconde • Joyeuse Saint-Valentin, ma Valentine, mon tout, pour l’éternité • 
+      <div class="marquee-content">
+        Rhiannon, mon amour éternel • Depuis le 17 mai 2025 à 22h, chaque jour avec toi est un rêve éveillé • Ton sourire fait battre mon cœur plus fort • Ton rire est ma mélodie préférée • Je t’aime d’une force qui ne cesse de grandir • Joyeuse Saint-Valentin, mon univers, ma maison, mon tout • 
+        Rhiannon, mon amour éternel • Depuis le 17 mai 2025 à 22h, chaque jour avec toi est un rêve éveillé • Ton sourire fait battre mon cœur plus fort • Ton rire est ma mélodie préférée • Je t’aime d’une force qui ne cesse de grandir • Joyeuse Saint-Valentin, mon univers, ma maison, mon tout • 
       </div>
     </div>
 
-    <!-- Arbre très beau -->
-    <div class="tree">
+    <!-- Arbre stylisé -->
+    <div class="tree-container">
       <div class="trunk"></div>
-      <div class="crown" id="crown"></div>
+      <div class="branches">
+        <div class="branch b1"></div>
+        <div class="branch b2"></div>
+        <div class="branch b3"></div>
+        <div class="branch b4"></div>
+        <div class="branch b5"></div>
+      </div>
+
+      <div class="hearts-cloud" id="hearts-main"></div>
+
+      <!-- Traînée qui s’envole -->
+      <div class="trail" id="trail"></div>
     </div>
 
-    <div class="timer-box">
-      <div class="label">Depuis notre premier soir…</div>
-      <div id="timer">0 mois – 0 jours – 0 h 0 min 0 s</div>
+    <div class="timer">
+      <div class="since">Depuis notre premier soir…</div>
+      <div id="time">0 mois – 0 jours – 0 h 0 min 0 s</div>
     </div>
+
   </div>
 
   <script>
-    // Boutons corrigés
-    let noClicks = 0;
-    const noTexts = ["Non","Tu es sûre ?","Réfléchis bien…","Vraiment ?","Allez dis oui !","Tu vas me briser le cœur","S’il te plaît ❤️","Pense à nous…","C’est la bonne réponse","Tu sais que tu en as envie","Rhiannon… ❤️"];
+    // Boutons
+    let noCount = 0;
+    const noMessages = ["Non","Tu es sûre ?","Réfléchis bien…","Vraiment ?","Allez dis oui !","Tu vas me briser le cœur 💔","S’il te plaît mon amour","Pense à nous…","C’est la bonne réponse","Rhiannon… ❤️"];
 
-    document.getElementById('no-btn').addEventListener('click', () => {
-      noClicks++;
+    document.getElementById('no-btn').onclick = () => {
+      noCount++;
       const btn = document.getElementById('no-btn');
-      btn.textContent = noClicks < noTexts.length ? noTexts[noClicks] : "😢";
+      btn.textContent = noCount < noMessages.length ? noMessages[noCount] : "😢";
 
-      // Oui grossit très fort mais reste joli
-      const scale = Math.min(1.15 + noClicks * 0.45, 7);
-      const yes = document.getElementById('yes-btn');
-      yes.style.transform = `scale(${scale})`;
-      yes.style.boxShadow = `0 ${scale*4}px ${scale*12}px rgba(255,45,85,0.7)`;
-    });
+      const scale = Math.min(1.2 + noCount * 0.5, 8);
+      document.getElementById('yes-btn').style.transform = `scale(${scale})`;
+    };
 
-    document.getElementById('yes-btn').addEventListener('click', () => {
-      document.getElementById('proposal').style.opacity = 0;
+    document.getElementById('yes-btn').onclick = () => {
+      document.getElementById('proposal').style.opacity = '0';
       setTimeout(() => {
         document.getElementById('proposal').style.display = 'none';
         document.getElementById('celebration').style.display = 'flex';
-        createTree();
-        createRain();
+        populateHearts();
+        startRain();
         startTimer();
-      }, 800);
-    });
+      }, 700);
+    };
 
-    // Arbre magnifique
-    function createTree() {
-      const crown = document.getElementById('crown');
-      const positions = [
-        {t:12,l:48,s:62,c:'#ff69b4'}, {t:18,l:28,s:48,c:'#ff2d55'},
-        {t:22,l:68,s:55,c:'#ffb6c1'}, {t:29,l:15,s:51,c:'#e91e63'},
-        {t:33,l:82,s:47,c:'#ff69b4'}, {t:38,l:35,s:68,c:'#ff1493'},
-        {t:42,l:58,s:72,c:'#ff2d55'}, {t:47,l:22,s:44,c:'#ffb6c1'},
-        {t:51,l:75,s:53,c:'#e91e63'}, {t:55,l:45,s:65,c:'#ff69b4'},
-        {t:62,l:12,s:49,c:'#ff2d55'}, {t:64,l:32,s:58,c:'#ffb6c1'},
-        {t:66,l:68,s:54,c:'#ff69b4'}, {t:70,l:50,s:61,c:'#e91e63'},
-        {t:73,l:85,s:42,c:'#ff1493'}, {t:78,l:25,s:46,c:'#ff2d55'},
-      ];
+    // Remplir l’arbre de cœurs
+    function populateHearts() {
+      const main = document.getElementById('hearts-main');
+      const trail = document.getElementById('trail');
 
-      positions.forEach(p => {
+      // Cœurs sur l’arbre
+      for (let i = 0; i < 140; i++) {
         const h = document.createElement('div');
         h.className = 'heart';
         h.textContent = '❤️';
-        h.style.top = p.t + '%';
-        h.style.left = p.l + '%';
-        h.style.fontSize = p.s + 'px';
-        h.style.color = p.c;
-        h.style.animationDelay = Math.random() * 2 + 's';
-        crown.appendChild(h);
-      });
+        h.style.left   = (15 + Math.random() * 70) + '%';
+        h.style.top    = (8 + Math.random() * 75) + '%';
+        h.style.fontSize = (24 + Math.random() * 32) + 'px';
+        h.style.color = ['#ff69b4','#ff2d55','#ffb6c1','#e91e63','#ff8da1'][Math.floor(Math.random()*5)];
+        h.style.animationDelay = Math.random() * 4 + 's';
+        main.appendChild(h);
+      }
+
+      // Traînée de cœurs qui s’envole
+      for (let i = 0; i < 60; i++) {
+        const h = document.createElement('div');
+        h.className = 'trail-heart';
+        h.textContent = '❤️';
+        h.style.left = (Math.random() * 40 - 20) + 'px';
+        h.style.top  = (Math.random() * 60 - 30) + 'px';
+        h.style.fontSize = (14 + Math.random() * 14) + 'px';
+        h.style.color = ['#ff69b4','#ffb6c1','#ff2d55','#ff8da1'][Math.floor(Math.random()*4)];
+        h.style.animationDelay = (i * 0.18) + 's';
+        trail.appendChild(h);
+      }
     }
 
-    // Cœurs qui tombent
-    function createRain() {
+    // Pluie de cœurs
+    function startRain() {
       const rain = document.getElementById('rain');
-      for (let i = 0; i < 90; i++) {
+      for (let i = 0; i < 70; i++) {
         const h = document.createElement('div');
         h.className = 'heart-rain';
         h.textContent = '❤️';
         h.style.left = Math.random() * 100 + 'vw';
-        h.style.fontSize = (18 + Math.random() * 22) + 'px';
-        h.style.animationDuration = (7 + Math.random() * 13) + 's';
-        h.style.animationDelay = '-' + Math.random() * 25 + 's';
-        h.style.opacity = 0.6 + Math.random() * 0.4;
+        h.style.animationDuration = (9 + Math.random() * 12) + 's';
+        h.style.animationDelay = -Math.random() * 20 + 's';
         rain.appendChild(h);
       }
     }
 
     // Timer
-    const startDate = new Date(2025, 4, 17, 22, 0, 0);
+    const debut = new Date(2025, 4, 17, 22, 0, 0);
+    function updateTime() {
+      const now = new Date();
+      let diff = now - debut;
+      if (diff < 0) return;
+
+      let sec   = Math.floor(diff / 1000) % 60;
+      let min   = Math.floor(diff / 60000) % 60;
+      let heure = Math.floor(diff / 3600000) % 24;
+      let jour  = Math.floor(diff / 86400000);
+
+      let mois = now.getMonth() - debut.getMonth() + 12 * (now.getFullYear() - debut.getFullYear());
+      if (now.getDate() < debut.getDate()) mois--;
+
+      document.getElementById('time').textContent = `${mois} mois – ${jour} jours – ${heure} h ${min} min ${sec} s`;
+    }
     function startTimer() {
-      setInterval(() => {
-        const now = new Date();
-        let diff = now - startDate;
-        if (diff < 0) return;
-
-        let s = Math.floor(diff / 1000) % 60;
-        let m = Math.floor(diff / 60000) % 60;
-        let h = Math.floor(diff / 3600000) % 24;
-        let days = Math.floor(diff / 86400000);
-
-        let months = now.getMonth() - startDate.getMonth() + 12 * (now.getFullYear() - startDate.getFullYear());
-        if (now.getDate() < startDate.getDate()) months--;
-
-        let text = `${months} mois – ${days} jours – ${h} h ${m} min ${s} s`;
-        document.getElementById('timer').textContent = text;
-      }, 1000);
+      updateTime();
+      setInterval(updateTime, 1000);
     }
   </script>
 </body>
