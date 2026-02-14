@@ -9,13 +9,17 @@
 
   <style>
     :root {
-      --rose: #ff69b4;
-      --deep: #e91e63;
-      --light: #ffb6c1;
-      --rouge: #ff2d55;
+      --rose:     #ff69b4;
+      --deep:     #e91e63;
+      --light:    #ffb6c1;
+      --rouge:    #ff2d55;
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       height: 100vh;
@@ -26,7 +30,13 @@
       position: relative;
     }
 
-    .rain { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
+    /* Pluie de cœurs */
+    .rain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
     .heart-rain {
       position: absolute;
       top: -60px;
@@ -34,8 +44,11 @@
       animation: fall linear infinite;
       filter: drop-shadow(0 5px 10px rgba(255,105,180,0.5));
     }
-    @keyframes fall { to { transform: translateY(120vh) rotate(1080deg); } }
+    @keyframes fall {
+      to { transform: translateY(120vh) rotate(1080deg); }
+    }
 
+    /* Écran demande */
     #proposal {
       position: fixed;
       inset: 0;
@@ -55,9 +68,22 @@
       text-align: center;
       max-width: 420px;
     }
-    h1 { font-family: 'Dancing Script', cursive; font-size: 5.8rem; color: var(--deep); margin-bottom: 10px; }
-    .question { font-size: 2.3rem; margin: 30px 0 50px; color: #555; }
-    .btns { display: flex; gap: 30px; justify-content: center; }
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 5.8rem;
+      color: var(--deep);
+      margin-bottom: 10px;
+    }
+    .question {
+      font-size: 2.3rem;
+      margin: 30px 0 50px;
+      color: #555;
+    }
+    .btns {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
     button {
       font-size: 2.4rem;
       padding: 18px 48px;
@@ -67,11 +93,20 @@
       font-weight: 600;
       transition: all 0.45s cubic-bezier(0.68,-0.55,0.27,1.55);
     }
-    #yes-btn { background: linear-gradient(45deg, var(--rose), var(--rouge)); color: white; transform-origin: center; }
+    #yes-btn {
+      background: linear-gradient(45deg, var(--rose), var(--rouge));
+      color: white;
+      transform-origin: center;
+    }
     #yes-btn:hover { transform: scale(1.15); }
-    #no-btn { background: white; color: #444; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+    #no-btn {
+      background: white;
+      color: #444;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
     #no-btn:hover { background: var(--light); color: white; }
 
+    /* Écran célébration */
     #celebration {
       display: none;
       position: fixed;
@@ -93,6 +128,7 @@
       margin-bottom: 15px;
     }
 
+    /* Poème défilant - corrigé */
     .marquee {
       width: 100%;
       max-width: 960px;
@@ -110,11 +146,15 @@
       font-family: 'Dancing Script', cursive;
       font-size: 2.4rem;
       padding-left: 100%;
-      animation: scroll 70s linear infinite;
+      animation: scroll 80s linear infinite;
       will-change: transform;
+      white-space: nowrap;
     }
-    @keyframes scroll { to { transform: translateX(-50%); } }
+    @keyframes scroll {
+      to { transform: translateX(-50%); }
+    }
 
+    /* Cœur centré */
     .heart-container {
       position: relative;
       width: 500px;
@@ -137,7 +177,10 @@
       animation: pulseHeart 3.2s infinite ease-in-out;
     }
 
-    @keyframes pulseHeart { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+    @keyframes pulseHeart {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.08); }
+    }
 
     .initials {
       position: absolute;
@@ -165,11 +208,12 @@
       transform-origin: center;
     }
     @keyframes explode {
-      0% { opacity: 1; transform: translate(-50%, -50%) scale(0.1) rotate(0deg); }
-      60% { opacity: 1; transform: translate(var(--dx), var(--dy)) scale(1.6) rotate(var(--rot)); }
+      0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.1) rotate(0deg); }
+      60%  { opacity: 1; transform: translate(var(--dx), var(--dy)) scale(1.6) rotate(var(--rot)); }
       100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.6) rotate(var(--rot)); }
     }
 
+    /* Timer */
     .timer-box {
       background: white;
       color: var(--deep);
@@ -180,20 +224,22 @@
       min-width: 440px;
       z-index: 12;
     }
-    .timer-box .label { font-size: 1.4rem; opacity: 0.85; margin-bottom: 10px; }
-    #timer { font-size: 2.4rem; font-weight: 700; }
+    .timer-box .label {
+      font-size: 1.4rem;
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+    #timer {
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
 
   <div class="rain" id="rain"></div>
 
-  <!-- MUSIQUE SoundCloud JVKE - her (minimal, sans pub visible si possible) -->
-  <iframe id="main-music" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1234567890&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
-  </iframe>
-
-  <!-- Écran 1 -->
+  <!-- Écran demande -->
   <div id="proposal">
     <div class="box">
       <h1>Rhiannon</h1>
@@ -205,7 +251,7 @@
     </div>
   </div>
 
-  <!-- Écran 2 -->
+  <!-- Écran célébration -->
   <div id="celebration">
     <div class="big-title">Oui...<br>Tu es ma Valentine<br>pour toujours</div>
 
@@ -229,6 +275,7 @@
   </div>
 
   <script>
+    // Boutons Oui/Non
     let noClicks = 0;
     const noTexts = ["Non","Tu es sûre ?","Réfléchis bien…","Vraiment ?","Allez dis oui !","Tu vas me briser le cœur","S’il te plaît ❤️","Pense à nous…","C’est la bonne réponse","Rhiannon… ❤️"];
 
@@ -236,6 +283,7 @@
       noClicks++;
       const btn = document.getElementById('no-btn');
       btn.textContent = noClicks < noTexts.length ? noTexts[noClicks] : "😢";
+
       const scale = Math.min(1.15 + noClicks * 0.45, 7);
       document.getElementById('yes-btn').style.transform = `scale(${scale})`;
     });
@@ -245,16 +293,12 @@
       setTimeout(() => {
         document.getElementById('proposal').style.display = 'none';
         document.getElementById('celebration').style.display = 'flex';
-
-        // Forcer la musique après interaction (réduit les pubs + débloque autoplay)
-        const music = document.getElementById('main-music');
-        if (music) music.src = music.src.replace('auto_play=false', 'auto_play=true');
-
         createRain();
         startTimer();
       }, 800);
     });
 
+    // Cœur + explosion
     let heartClicks = 0;
     const heart = document.getElementById('heartClick');
     const explosionZone = document.getElementById('explosion');
@@ -291,6 +335,7 @@
       }
     });
 
+    // Pluie de cœurs
     function createRain() {
       const rain = document.getElementById('rain');
       for (let i = 0; i < 80; i++) {
@@ -305,17 +350,21 @@
       }
     }
 
+    // Timer
     const start = new Date(2025, 4, 17, 22, 0, 0);
     function updateTimer() {
       const now = new Date();
       let diff = now - start;
       if (diff < 0) return;
+
       let s = Math.floor(diff / 1000) % 60;
       let m = Math.floor(diff / 60000) % 60;
       let h = Math.floor(diff / 3600000) % 24;
       let d = Math.floor(diff / 86400000);
+
       let months = now.getMonth() - start.getMonth() + 12 * (now.getFullYear() - start.getFullYear());
       if (now.getDate() < start.getDate()) months--;
+
       document.getElementById('timer').textContent = `${months} mois – ${d} jours – ${h} h ${m} min ${s} s`;
     }
     function startTimer() {
