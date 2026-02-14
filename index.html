@@ -1,373 +1,290 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pour Rhiannon ❤️</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pour Rhiannon ❤️</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --rose:     #ff69b4;
-      --deep:     #e91e63;
-      --light:    #ffb6c1;
-      --rouge:    #ff2d55;
-    }
+<style>
+:root {
+  --rose:#ff69b4;
+  --deep:#e91e63;
+  --light:#ffb6c1;
+  --rouge:#ff2d55;
+}
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-    body {
-      height: 100vh;
-      background: linear-gradient(135deg, #fff0f5, #ffe4e9);
-      font-family: 'Playfair Display', serif;
-      color: white;
-      overflow: hidden;
-      position: relative;
-    }
+body{
+  height:100vh;
+  background:linear-gradient(135deg,#fff0f5,#ffe4e9);
+  font-family:'Playfair Display',serif;
+  color:white;
+  overflow:hidden;
+  position:relative;
+}
 
-    /* Pluie de cœurs en fond */
-    .rain {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .heart-rain {
-      position: absolute;
-      top: -60px;
-      font-size: 26px;
-      animation: fall linear infinite;
-      filter: drop-shadow(0 5px 10px rgba(255,105,180,0.5));
-    }
-    @keyframes fall {
-      to { transform: translateY(120vh) rotate(1080deg); }
-    }
+/* pluie */
+.rain{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+.heart-rain{
+  position:absolute;
+  top:-60px;
+  font-size:26px;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(120vh) rotate(1080deg);}
+}
 
-    /* Écran 1 - Demande */
-    #proposal {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 30;
-      background: rgba(255,240,245,0.94);
-      transition: opacity 0.9s ease;
-    }
-    .box {
-      background: white;
-      color: #333;
-      padding: 60px 50px;
-      border-radius: 40px;
-      box-shadow: 0 30px 80px rgba(233,30,99,0.25);
-      text-align: center;
-      max-width: 420px;
-    }
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 5.8rem;
-      color: var(--deep);
-      margin-bottom: 10px;
-    }
-    .question {
-      font-size: 2.3rem;
-      margin: 30px 0 50px;
-      color: #555;
-    }
-    .btns {
-      display: flex;
-      gap: 30px;
-      justify-content: center;
-    }
-    button {
-      font-size: 2.4rem;
-      padding: 18px 48px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.45s cubic-bezier(0.68,-0.55,0.27,1.55);
-    }
-    #yes-btn {
-      background: linear-gradient(45deg, var(--rose), var(--rouge));
-      color: white;
-      transform-origin: center;
-    }
-    #yes-btn:hover { transform: scale(1.15); }
-    #no-btn {
-      background: white;
-      color: #444;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    #no-btn:hover { background: var(--light); color: white; }
+/* écran 1 */
+#proposal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:30;
+  background:rgba(255,240,245,0.94);
+  transition:opacity 0.9s ease;
+}
+.box{
+  background:white;
+  color:#333;
+  padding:60px 50px;
+  border-radius:40px;
+  box-shadow:0 30px 80px rgba(233,30,99,0.25);
+  text-align:center;
+  max-width:420px;
+}
+h1{
+  font-family:'Dancing Script',cursive;
+  font-size:5.8rem;
+  color:var(--deep);
+  margin-bottom:10px;
+}
+.question{
+  font-size:2.3rem;
+  margin:30px 0 50px;
+  color:#555;
+}
+.btns{
+  display:flex;
+  gap:30px;
+  justify-content:center;
+}
+button{
+  font-size:2.4rem;
+  padding:18px 48px;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  font-weight:600;
+  transition:all 0.45s cubic-bezier(0.68,-0.55,0.27,1.55);
+}
+#yes-btn{
+  background:linear-gradient(45deg,var(--rose),var(--rouge));
+  color:white;
+}
+#yes-btn:hover{transform:scale(1.15);}
+#no-btn{
+  background:white;
+  color:#444;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+#no-btn:hover{background:var(--light);color:white;}
 
-    /* Écran 2 - Célébration */
-    #celebration {
-      display: none;
-      position: fixed;
-      inset: 0;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding: 30px 20px 50px;
-      z-index: 20;
-    }
+/* écran 2 */
+#celebration{
+  display:none;
+  position:fixed;
+  inset:0;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:30px;
+  padding:40px 20px 50px;
+  z-index:20;
+}
 
-    .big-title {
-      font-family: 'Dancing Script', cursive;
-      font-size: 5.4rem;
-      text-align: center;
-      color: white;
-      text-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      line-height: 0.95;
-      margin-bottom: 15px;
-      z-index: 10;
-    }
+/* titre corrigé */
+.big-title{
+  font-family:'Dancing Script',cursive;
+  font-size:5.4rem;
+  text-align:center;
+  color:white;
+  text-shadow:0 10px 30px rgba(0,0,0,0.4);
+  line-height:1.05;
+  position:relative;
+  z-index:20;
+}
 
-    /* Poème défilant - VERSION CORRIGÉE */
-    .marquee {
-      width: 100%;
-      max-width: 960px;
-      background: rgba(255,255,255,0.92);
-      color: var(--deep);
-      padding: 16px 0;
-      border-radius: 50px;
-      box-shadow: 0 12px 45px rgba(0,0,0,0.2);
-      overflow: hidden;
-      white-space: nowrap;
-      z-index: 12;
-    }
-    .marquee-inner {
-      display: inline-block;
-      font-family: 'Dancing Script', cursive;
-      font-size: 2.4rem;
-      padding-left: 100%;
-      animation: scroll 80s linear infinite;
-      will-change: transform;
-      white-space: nowrap;
-    }
-    @keyframes scroll {
-      to { transform: translateX(-50%); }
-    }
+/* bandeau défilant corrigé */
+.marquee{
+  position:relative;
+  z-index:15;
+  width:100%;
+  max-width:960px;
+  background:rgba(255,255,255,0.92);
+  color:var(--deep);
+  padding:16px 0;
+  border-radius:50px;
+  box-shadow:0 12px 45px rgba(0,0,0,0.2);
+  overflow:hidden;
+  white-space:nowrap;
+}
+.marquee-inner{
+  display:inline-block;
+  font-family:'Dancing Script',cursive;
+  font-size:2.4rem;
+  padding-left:100%;
+  animation:scroll 80s linear infinite;
+}
+@keyframes scroll{
+  to{transform:translateX(-50%);}
+}
 
-    /* Cœur parfaitement centré */
-    .heart-container {
-      position: relative;
-      width: 520px;
-      height: 520px;
-      margin: 20px auto;
-      cursor: pointer;
-      z-index: 8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      filter: drop-shadow(0 30px 70px rgba(233,30,99,0.45));
-    }
+/* coeur */
+.heart-container{
+  position:relative;
+  width:520px;
+  height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+.heart-shape{
+  font-size:480px;
+  animation:pulseHeart 3.2s infinite ease-in-out;
+}
+@keyframes pulseHeart{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+}
+.initials{
+  position:absolute;
+  font-family:'Dancing Script',cursive;
+  font-size:9.8rem;
+  color:white;
+  text-shadow:0 8px 25px rgba(0,0,0,0.7);
+}
 
-    .heart-shape {
-      font-size: 480px;
-      line-height: 1;
-      background: linear-gradient(135deg, #ff69b4, #e91e63);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: pulseHeart 3.2s infinite ease-in-out;
-    }
-
-    @keyframes pulseHeart {
-      0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.08); }
-    }
-
-    .initials {
-      position: absolute;
-      font-family: 'Dancing Script', cursive;
-      font-size: 9.8rem;
-      color: white;
-      text-shadow: 0 8px 25px rgba(0,0,0,0.7);
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .explosion {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 15;
-    }
-    .boom-heart {
-      position: absolute;
-      font-size: 34px;
-      left: 50%;
-      top: 50%;
-      opacity: 0;
-      animation: explode 1.4s forwards;
-      transform-origin: center;
-    }
-    @keyframes explode {
-      0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.1) rotate(0deg); }
-      60%  { opacity: 1; transform: translate(var(--dx), var(--dy)) scale(1.6) rotate(var(--rot)); }
-      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.6) rotate(var(--rot)); }
-    }
-
-    /* Timer */
-    .timer-box {
-      background: white;
-      color: var(--deep);
-      padding: 22px 50px;
-      border-radius: 30px;
-      box-shadow: 0 15px 50px rgba(0,0,0,0.22);
-      text-align: center;
-      min-width: 440px;
-      z-index: 12;
-    }
-    .timer-box .label {
-      font-size: 1.4rem;
-      opacity: 0.85;
-      margin-bottom: 10px;
-    }
-    #timer {
-      font-size: 2.4rem;
-      font-weight: 700;
-    }
-  </style>
+/* timer */
+.timer-box{
+  background:white;
+  color:var(--deep);
+  padding:22px 50px;
+  border-radius:30px;
+  box-shadow:0 15px 50px rgba(0,0,0,0.22);
+  text-align:center;
+  min-width:440px;
+}
+.timer-box .label{
+  font-size:1.4rem;
+  opacity:0.85;
+  margin-bottom:10px;
+}
+#timer{
+  font-size:2.4rem;
+  font-weight:700;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="rain" id="rain"></div>
+<div class="rain" id="rain"></div>
 
-  <!-- Écran 1 -->
-  <div id="proposal">
-    <div class="box">
-      <h1>Rhiannon</h1>
-      <p class="question">Veux-tu être ma Valentine ?</p>
-      <div class="btns">
-        <button id="yes-btn">Oui ❤️</button>
-        <button id="no-btn">Non</button>
-      </div>
+<!-- écran 1 -->
+<div id="proposal">
+  <div class="box">
+    <h1>Rhiannon</h1>
+    <p class="question">Veux-tu être ma Valentine ?</p>
+    <div class="btns">
+      <button id="yes-btn">Oui ❤️</button>
+      <button id="no-btn">Non</button>
+    </div>
+  </div>
+</div>
+
+<!-- écran 2 -->
+<div id="celebration">
+  <div class="big-title">
+    Oui...<br>Tu es ma Valentine<br>pour toujours
+  </div>
+
+  <div class="marquee">
+    <div class="marquee-inner">
+      Rhiannon, mon amour éternel • Depuis ce 17 mai 2025 où nos cœurs se sont trouvés, chaque jour est plus beau grâce à toi • Ton sourire illumine ma vie • Je t’aime plus fort chaque seconde • Joyeuse Saint-Valentin pour l’éternité • 
+      Rhiannon, mon amour éternel • Depuis ce 17 mai 2025 où nos cœurs se sont trouvés, chaque jour est plus beau grâce à toi • Ton sourire illumine ma vie • Je t’aime plus fort chaque seconde • Joyeuse Saint-Valentin pour l’éternité • 
     </div>
   </div>
 
-  <!-- Écran 2 -->
-  <div id="celebration">
-    <div class="big-title">Oui...<br>Tu es ma Valentine<br>pour toujours</div>
-
-    <div class="marquee">
-      <div class="marquee-inner">
-        Rhiannon, mon amour éternel • Depuis ce 17 mai 2025 où nos cœurs se sont trouvés, chaque jour est plus beau grâce à toi • Ton sourire illumine ma vie, ton rire est ma mélodie préférée • Je t’aime plus fort chaque seconde • Joyeuse Saint-Valentin, ma Valentine, mon tout, pour l’éternité • 
-        Rhiannon, mon amour éternel • Depuis ce 17 mai 2025 où nos cœurs se sont trouvés, chaque jour est plus beau grâce à toi • Ton sourire illumine ma vie, ton rire est ma mélodie préférée • Je t’aime plus fort chaque seconde • Joyeuse Saint-Valentin, ma Valentine, mon tout, pour l’éternité • 
-      </div>
-    </div>
-
-    <div class="heart-container" id="heartClick">
-      <div class="heart-shape">❤️</div>
-      <div class="initials">E + R =</div>
-      <div class="explosion" id="explosion"></div>
-    </div>
-
-    <div class="timer-box">
-      <div class="label">Depuis notre premier soir…</div>
-      <div id="timer">0 mois – 0 jours – 0 h 0 min 0 s</div>
-    </div>
+  <div class="heart-container">
+    <div class="heart-shape">❤️</div>
+    <div class="initials">E + R =</div>
   </div>
 
-  <script>
-    // Boutons Oui/Non
-    let noClicks = 0;
-    const noTexts = ["Non","Tu es sûre ?","Réfléchis bien…","Vraiment ?","Allez dis oui !","Tu vas me briser le cœur","S’il te plaît ❤️","Pense à nous…","C’est la bonne réponse","Rhiannon… ❤️"];
+  <div class="timer-box">
+    <div class="label">Depuis notre premier soir…</div>
+    <div id="timer">0 mois – 0 jours – 0 h 0 min 0 s</div>
+  </div>
+</div>
 
-    document.getElementById('no-btn').addEventListener('click', () => {
-      noClicks++;
-      const btn = document.getElementById('no-btn');
-      btn.textContent = noClicks < noTexts.length ? noTexts[noClicks] : "😢";
+<script>
+document.getElementById('yes-btn').addEventListener('click',()=>{
+  document.getElementById('proposal').style.opacity=0;
+  setTimeout(()=>{
+    document.getElementById('proposal').style.display='none';
+    document.getElementById('celebration').style.display='flex';
+    createRain();
+    startTimer();
+  },800);
+});
 
-      const scale = Math.min(1.15 + noClicks * 0.45, 7);
-      document.getElementById('yes-btn').style.transform = `scale(${scale})`;
-    });
+function createRain(){
+  const rain=document.getElementById('rain');
+  for(let i=0;i<80;i++){
+    const h=document.createElement('div');
+    h.className='heart-rain';
+    h.textContent='❤️';
+    h.style.left=Math.random()*100+'vw';
+    h.style.fontSize=(16+Math.random()*24)+'px';
+    h.style.animationDuration=(8+Math.random()*14)+'s';
+    h.style.animationDelay=-Math.random()*25+'s';
+    rain.appendChild(h);
+  }
+}
 
-    document.getElementById('yes-btn').addEventListener('click', () => {
-      document.getElementById('proposal').style.opacity = 0;
-      setTimeout(() => {
-        document.getElementById('proposal').style.display = 'none';
-        document.getElementById('celebration').style.display = 'flex';
-        createRain();
-        startTimer();
-      }, 800);
-    });
+const start=new Date(2025,4,17,22,0,0);
+function updateTimer(){
+  const now=new Date();
+  let diff=now-start;
+  if(diff<0)return;
 
-    // Cœur + explosion (accumulation)
-    let heartClicks = 0;
-    const heart = document.getElementById('heartClick');
-    const explosionZone = document.getElementById('explosion');
+  let s=Math.floor(diff/1000)%60;
+  let m=Math.floor(diff/60000)%60;
+  let h=Math.floor(diff/3600000)%24;
+  let d=Math.floor(diff/86400000);
 
-    heart.addEventListener('click', () => {
-      heartClicks++;
+  let months=now.getMonth()-start.getMonth()+12*(now.getFullYear()-start.getFullYear());
+  if(now.getDate()<start.getDate())months--;
 
-      const count = 40 + heartClicks * 10;
+  document.getElementById('timer').textContent=
+    `${months} mois – ${d} jours – ${h} h ${m} min ${s} s`;
+}
+function startTimer(){
+  updateTimer();
+  setInterval(updateTimer,1000);
+}
+</script>
 
-      for (let i = 0; i < count; i++) {
-        const h = document.createElement('div');
-        h.className = 'boom-heart';
-        h.textContent = '❤️';
-        h.style.color = ['#ff69b4','#ffb6c1','#ff2d55','#e91e63','#ff8da1'][Math.floor(Math.random()*5)];
-
-        const angle = Math.random() * 360;
-        const dist = 150 + Math.random() * 300;
-        const dx = Math.cos(angle * Math.PI / 180) * dist;
-        const dy = Math.sin(angle * Math.PI / 180) * dist;
-        const rot = (Math.random() - 0.5) * 900;
-
-        h.style.setProperty('--dx', dx + 'px');
-        h.style.setProperty('--dy', dy + 'px');
-        h.style.setProperty('--rot', rot + 'deg');
-        h.style.animationDelay = Math.random() * 0.6 + 's';
-
-        explosionZone.appendChild(h);
-      }
-
-      if (heartClicks >= 17) {
-        setTimeout(() => {
-          window.location.href = "album-rhiannon.html";
-        }, 800);
-      }
-    });
-
-    // Pluie de cœurs après "Oui"
-    function createRain() {
-      const rain = document.getElementById('rain');
-      for (let i = 0; i < 80; i++) {
-        const h = document.createElement('div');
-        h.className = 'heart-rain';
-        h.textContent = '❤️';
-        h.style.left = Math.random() * 100 + 'vw';
-        h.style.fontSize = (16 + Math.random() * 24) + 'px';
-        h.style.animationDuration = (8 + Math.random() * 14) + 's';
-        h.style.animationDelay = -Math.random() * 25 + 's';
-        rain.appendChild(h);
-      }
-    }
-
-    // Timer
-    const start = new Date(2025, 4, 17, 22, 0, 0);
-    function updateTimer() {
-      const now = new Date();
-      let diff = now - start;
-      if (diff < 0) return;
-
-      let s = Math.floor(diff / 1000) % 60;
-      let m = Math.floor(diff / 60000) % 60;
-      let h = Math.floor(diff / 3600000) % 24;
-      let d = Math.floor(diff / 86400000);
-
-      let months = now.getMonth() - start.getMonth() + 12 * (now.getFullYear() - start.getFullYear());
-      if (now.getDate() < start.getDate()) months--;
-
-      document.getElementById('timer').textContent = `${months} mois – ${d} jours – ${h} h ${m} min ${s} s`;
-    }
-    function startTimer() {
-      updateTimer();
-      setInterval(updateTimer, 1000);
-    }
-  </script>
 </body>
 </html>
