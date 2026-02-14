@@ -1,272 +1,295 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Pour Rhiannon ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pour Rhiannon ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --rose:#ff69b4;
-  --deep:#e91e63;
-}
+  <style>
+    :root {
+      --rose:     #ff69b4;
+      --deep:     #e91e63;
+      --light:    #ffb6c1;
+      --rouge:    #ff2d55;
+    }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  height:100vh;
-  overflow:hidden;
-  background:linear-gradient(135deg,#fff5f8,#ffe4e9);
-  font-family:'Playfair Display',serif;
-}
+    * { margin:0; padding:0; box-sizing:border-box; }
 
-/* --------- ÉCRAN DEMANDE --------- */
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #fff0f5, #ffe4e9);
+      font-family: 'Playfair Display', serif;
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
 
-#proposal{
-  position:fixed;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(255,245,248,0.95);
-  z-index:30;
-  transition:0.8s;
-}
+    /* Cœurs qui tombent */
+    .rain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .heart-rain {
+      position: absolute;
+      top: -50px;
+      font-size: 28px;
+      animation: fall linear infinite;
+      filter: drop-shadow(0 4px 8px rgba(255,105,180,0.4));
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(720deg); }
+    }
 
-.proposal-box{
-  background:white;
-  padding:4rem;
-  border-radius:30px;
-  box-shadow:0 25px 70px rgba(233,30,99,0.25);
-  text-align:center;
-}
+    /* Écran 1 – Demande */
+    #proposal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+      background: rgba(255,240,245,0.95);
+      transition: opacity 0.9s;
+    }
+    .box {
+      background: white;
+      color: #333;
+      padding: 60px 50px;
+      border-radius: 40px;
+      box-shadow: 0 30px 80px rgba(233,30,99,0.25);
+      text-align: center;
+      max-width: 420px;
+    }
+    h1 { 
+      font-family: 'Dancing Script', cursive;
+      font-size: 5.8rem;
+      color: var(--deep);
+      margin-bottom: 10px;
+    }
+    .question { font-size: 2.3rem; margin: 30px 0 50px; color: #555; }
+    .btns { display: flex; gap: 30px; justify-content: center; }
+    button {
+      font-size: 2.4rem;
+      padding: 18px 48px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.45s cubic-bezier(0.68,-0.55,0.27,1.55);
+    }
+    #yes-btn {
+      background: linear-gradient(45deg, var(--rose), var(--rouge));
+      color: white;
+      transform-origin: center;
+    }
+    #yes-btn:hover { transform: scale(1.15); }
+    #no-btn { background: white; color: #444; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+    #no-btn:hover { background: var(--light); color: white; }
 
-h1{
-  font-family:'Dancing Script',cursive;
-  font-size:5rem;
-  color:var(--deep);
-}
+    /* Écran 2 – Célébration */
+    #celebration {
+      display: none;
+      position: fixed;
+      inset: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 20px 30px;
+      z-index: 20;
+      overflow-y: auto;
+    }
 
-.question{
-  font-size:2rem;
-  margin:2rem 0;
-}
+    .big-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 5.2rem;
+      text-align: center;
+      color: white;
+      text-shadow: 0 8px 25px rgba(0,0,0,0.35);
+      line-height: 0.95;
+      margin-bottom: 15px;
+      z-index: 10;
+    }
 
-button{
-  font-size:2rem;
-  padding:1rem 3rem;
-  border:none;
-  border-radius:999px;
-  cursor:pointer;
-  transition:0.4s;
-  margin:1rem;
-}
+    .marquee {
+      width: 100%;
+      max-width: 920px;
+      background: rgba(255,255,255,0.92);
+      color: var(--deep);
+      padding: 16px 0;
+      border-radius: 50px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      overflow: hidden;
+      white-space: nowrap;
+      z-index: 12;
+    }
+    .marquee-inner {
+      display: inline-block;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.35rem;
+      padding-left: 100%;
+      animation: scroll 48s linear infinite;
+    }
+    @keyframes scroll { to { transform: translateX(-50%); } }
 
-#yes-btn{
-  background:linear-gradient(135deg,var(--rose),var(--deep));
-  color:white;
-}
+    /* Ton image d’arbre */
+    .tree-image {
+      max-width: 90%;
+      max-height: 65vh;
+      object-fit: contain;
+      margin: 20px 0;
+      filter: drop-shadow(0 25px 50px rgba(139,0,86,0.35));
+      z-index: 8;
+    }
 
-#yes-btn:hover{transform:scale(1.1);}
+    /* Timer */
+    .timer-box {
+      background: white;
+      color: var(--deep);
+      padding: 22px 50px;
+      border-radius: 30px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.22);
+      text-align: center;
+      min-width: 420px;
+      z-index: 12;
+    }
+    .timer-box .label {
+      font-size: 1.35rem;
+      opacity: 0.85;
+      margin-bottom: 8px;
+    }
+    #timer {
+      font-size: 2.35rem;
+      font-weight: 700;
+    }
 
-#no-btn{background:white;}
-#no-btn:hover{background:#ffb6c1;color:white;}
-
-/* --------- ÉCRAN FINAL --------- */
-
-#celebration{
-  display:none;
-  position:fixed;
-  inset:0;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-between;
-  padding:2rem 1rem 3rem;
-}
-
-.title{
-  font-family:'Dancing Script',cursive;
-  font-size:4.5rem;
-  text-align:center;
-  color:white;
-  text-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-
-/* --------- ARBRE --------- */
-
-.tree-container{
-  position:relative;
-  width:520px;
-  height:620px;
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
-}
-
-/* Tronc */
-.trunk{
-  position:absolute;
-  bottom:0;
-  width:70px;
-  height:360px;
-  background:linear-gradient(to right,#3e2723,#6d4c41,#8d5524);
-  border-radius:40px;
-  box-shadow:inset 12px 0 25px rgba(0,0,0,0.5);
-}
-
-/* Branches */
-.branch{
-  position:absolute;
-  width:180px;
-  height:18px;
-  background:linear-gradient(to right,#6d4c41,#8d5524);
-  border-radius:20px;
-  top:180px;
-  left:50%;
-  transform-origin:left center;
-}
-
-.b1{transform:rotate(-35deg);}
-.b2{transform:rotate(30deg);}
-.b3{top:150px;transform:rotate(-55deg);}
-.b4{top:150px;transform:rotate(50deg);}
-
-.hearts-cloud{
-  position:absolute;
-  inset:0;
-}
-
-/* Cœurs */
-.heart{
-  position:absolute;
-  animation:float 5s ease-in-out infinite;
-  transform-origin:center;
-}
-
-@keyframes float{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.15);}
-}
-
-/* Timer */
-.timer{
-  background:rgba(255,255,255,0.95);
-  padding:1.5rem 3rem;
-  border-radius:25px;
-  box-shadow:0 15px 45px rgba(0,0,0,0.2);
-  color:var(--deep);
-  font-size:1.6rem;
-  text-align:center;
-}
-
-.since{
-  font-size:1.2rem;
-  margin-bottom:0.5rem;
-}
-</style>
+    /* Musique discrète */
+    #spotify {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      width: 140px;
+      height: 60px;
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 50;
+    }
+  </style>
 </head>
-
 <body>
 
-<div id="proposal">
-  <div class="proposal-box">
-    <h1>Rhiannon</h1>
-    <div class="question">Veux-tu être ma Valentine ?</div>
-    <button id="yes-btn">Oui ❤️</button>
-    <button id="no-btn">Non</button>
-  </div>
-</div>
+  <!-- Pluie de cœurs -->
+  <div class="rain" id="rain"></div>
 
-<div id="celebration">
-
-  <div class="title">Oui…<br>Tu es ma Valentine<br>pour toujours</div>
-
-  <div class="tree-container">
-    <div class="trunk"></div>
-    <div class="branch b1"></div>
-    <div class="branch b2"></div>
-    <div class="branch b3"></div>
-    <div class="branch b4"></div>
-    <div class="hearts-cloud" id="hearts-main"></div>
+  <!-- Musique -->
+  <div id="spotify">
+    <iframe src="https://open.spotify.com/embed/track/6G9YlbU3ByPJQvOFDRdwyM?utm_source=generator"
+            width="100%" height="60" frameborder="0" allow="autoplay; encrypted-media"></iframe>
   </div>
 
-  <div class="timer">
-    <div class="since">Depuis notre premier soir…</div>
-    <div id="time"></div>
+  <!-- Écran 1 -->
+  <div id="proposal">
+    <div class="box">
+      <h1>Rhiannon</h1>
+      <p class="question">Veux-tu être ma Valentine ?</p>
+      <div class="btns">
+        <button id="yes-btn">Oui ❤️</button>
+        <button id="no-btn">Non</button>
+      </div>
+    </div>
   </div>
 
-</div>
+  <!-- Écran 2 -->
+  <div id="celebration">
+    <div class="big-title">Oui...<br>Tu es ma Valentine<br>pour toujours</div>
 
-<script>
+    <div class="marquee">
+      <div class="marquee-inner">
+        Rhiannon, mon amour éternel • Depuis ce 17 mai 2025 où nos cœurs se sont trouvés, chaque jour est plus beau grâce à toi • Ton sourire illumine ma vie, ton rire est ma mélodie préférée • Je t’aime plus fort chaque seconde • Joyeuse Saint-Valentin, ma Valentine, mon tout, pour l’éternité • 
+      </div>
+    </div>
 
-/* --------- Boutons --------- */
+    <!-- Ton arbre ici -->
+    <img 
+      src="https://i.imgur.com/s9PbYmL.png" 
+      alt="Arbre d'amour pour Rhiannon" 
+      class="tree-image"
+    >
 
-document.getElementById("yes-btn").onclick=()=>{
-  document.getElementById("proposal").style.opacity="0";
-  setTimeout(()=>{
-    document.getElementById("proposal").style.display="none";
-    document.getElementById("celebration").style.display="flex";
-    populateHearts();
-    startTimer();
-  },600);
-};
+    <div class="timer-box">
+      <div class="label">Depuis notre premier soir…</div>
+      <div id="timer">0 mois – 0 jours – 0 h 0 min 0 s</div>
+    </div>
+  </div>
 
-/* --------- CŒUR EN FORME PARFAITE --------- */
+  <script>
+    // Boutons
+    let noClicks = 0;
+    const noTexts = ["Non","Tu es sûre ?","Réfléchis bien…","Vraiment ?","Allez dis oui !","Tu vas me briser le cœur","S’il te plaît ❤️","Pense à nous…","C’est la bonne réponse","Tu sais que tu en as envie","Rhiannon… ❤️"];
 
-function populateHearts(){
-  const main=document.getElementById("hearts-main");
+    document.getElementById('no-btn').addEventListener('click', () => {
+      noClicks++;
+      const btn = document.getElementById('no-btn');
+      btn.textContent = noClicks < noTexts.length ? noTexts[noClicks] : "😢";
 
-  for(let i=0;i<260;i++){
+      const scale = Math.min(1.15 + noClicks * 0.45, 7);
+      document.getElementById('yes-btn').style.transform = `scale(${scale})`;
+    });
 
-    const t=Math.random()*Math.PI*2;
-    const scale=15;
+    document.getElementById('yes-btn').addEventListener('click', () => {
+      document.getElementById('proposal').style.opacity = 0;
+      setTimeout(() => {
+        document.getElementById('proposal').style.display = 'none';
+        document.getElementById('celebration').style.display = 'flex';
+        createRain();
+        startTimer();
+      }, 800);
+    });
 
-    const x=16*Math.pow(Math.sin(t),3);
-    const y=
-      13*Math.cos(t)-
-      5*Math.cos(2*t)-
-      2*Math.cos(3*t)-
-      Math.cos(4*t);
+    // Pluie de cœurs
+    function createRain() {
+      const rain = document.getElementById('rain');
+      for (let i = 0; i < 90; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart-rain';
+        h.textContent = '❤️';
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.fontSize = (18 + Math.random() * 22) + 'px';
+        h.style.animationDuration = (7 + Math.random() * 13) + 's';
+        h.style.animationDelay = -Math.random() * 25 + 's';
+        h.style.opacity = 0.6 + Math.random() * 0.4;
+        rain.appendChild(h);
+      }
+    }
 
-    const h=document.createElement("div");
-    h.className="heart";
-    h.textContent="❤️";
+    // Timer depuis 17 mai 2025 22h
+    const start = new Date(2025, 4, 17, 22, 0, 0);
+    function updateTimer() {
+      const now = new Date();
+      let diff = now - start;
+      if (diff < 0) {
+        document.getElementById('timer').textContent = "Bientôt notre anniversaire…";
+        return;
+      }
 
-    h.style.left=50+(x*scale)/40+"%";
-    h.style.top=35-(y*scale)/40+"%";
-    h.style.fontSize=(24+Math.random()*28)+"px";
-    h.style.color=["#ff2d55","#ff69b4","#e91e63","#ff8da1"][Math.floor(Math.random()*4)];
+      let s = Math.floor(diff / 1000) % 60;
+      let m = Math.floor(diff / 60000) % 60;
+      let h = Math.floor(diff / 3600000) % 24;
+      let d = Math.floor(diff / 86400000);
 
-    main.appendChild(h);
-  }
-}
+      let months = now.getMonth() - start.getMonth() + 12 * (now.getFullYear() - start.getFullYear());
+      if (now.getDate() < start.getDate()) months--;
 
-/* --------- TIMER --------- */
-
-const debut=new Date(2025,4,17,22,0,0);
-
-function updateTime(){
-  const now=new Date();
-  let diff=now-debut;
-
-  let sec=Math.floor(diff/1000)%60;
-  let min=Math.floor(diff/60000)%60;
-  let h=Math.floor(diff/3600000)%24;
-  let d=Math.floor(diff/86400000);
-
-  let mois=now.getMonth()-debut.getMonth()+12*(now.getFullYear()-debut.getFullYear());
-  if(now.getDate()<debut.getDate())mois--;
-
-  document.getElementById("time").textContent=
-  `${mois} mois – ${d} jours – ${h} h ${min} min ${sec} s`;
-}
-
-function startTimer(){
-  updateTime();
-  setInterval(updateTime,1000);
-}
-
-</script>
+      let text = `${months} mois – ${d} jours – ${h} h ${m} min ${s} s`;
+      document.getElementById('timer').textContent = text;
+    }
+    function startTimer() {
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
+  </script>
 </body>
 </html>
