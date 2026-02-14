@@ -110,11 +110,11 @@
       font-family: 'Dancing Script', cursive;
       font-size: 2.4rem;
       padding-left: 100%;
-      animation: scroll 52s linear infinite;
+      animation: scroll 70s linear infinite;
+      will-change: transform;
     }
     @keyframes scroll { to { transform: translateX(-50%); } }
 
-    /* CŒUR PARFAITEMENT CENTRÉ */
     .heart-container {
       position: relative;
       width: 500px;
@@ -137,10 +137,7 @@
       animation: pulseHeart 3.2s infinite ease-in-out;
     }
 
-    @keyframes pulseHeart {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-    }
+    @keyframes pulseHeart { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 
     .initials {
       position: absolute;
@@ -191,8 +188,10 @@
 
   <div class="rain" id="rain"></div>
 
-  <!-- MUSIQUE PRINCIPALE : JVKE - her -->
-  <iframe id="main-music" width="0" height="0" frameborder="0" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/itsjvke/her-feat-john-michael-howell&amp;color=%23ff5500&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe>
+  <!-- MUSIQUE SoundCloud JVKE - her (minimal, sans pub visible si possible) -->
+  <iframe id="main-music" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1234567890&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+  </iframe>
 
   <!-- Écran 1 -->
   <div id="proposal">
@@ -212,6 +211,7 @@
 
     <div class="marquee">
       <div class="marquee-inner">
+        Rhiannon, mon amour éternel • Depuis ce 17 mai 2025 où nos cœurs se sont trouvés, chaque jour est plus beau grâce à toi • Ton sourire illumine ma vie, ton rire est ma mélodie préférée • Je t’aime plus fort chaque seconde • Joyeuse Saint-Valentin, ma Valentine, mon tout, pour l’éternité • 
         Rhiannon, mon amour éternel • Depuis ce 17 mai 2025 où nos cœurs se sont trouvés, chaque jour est plus beau grâce à toi • Ton sourire illumine ma vie, ton rire est ma mélodie préférée • Je t’aime plus fort chaque seconde • Joyeuse Saint-Valentin, ma Valentine, mon tout, pour l’éternité • 
       </div>
     </div>
@@ -245,12 +245,16 @@
       setTimeout(() => {
         document.getElementById('proposal').style.display = 'none';
         document.getElementById('celebration').style.display = 'flex';
+
+        // Forcer la musique après interaction (réduit les pubs + débloque autoplay)
+        const music = document.getElementById('main-music');
+        if (music) music.src = music.src.replace('auto_play=false', 'auto_play=true');
+
         createRain();
         startTimer();
       }, 800);
     });
 
-    // CŒUR + EXPLOSION (sans reset, on ajoute à chaque clic)
     let heartClicks = 0;
     const heart = document.getElementById('heartClick');
     const explosionZone = document.getElementById('explosion');
@@ -258,7 +262,7 @@
     heart.addEventListener('click', () => {
       heartClicks++;
 
-      const count = 40 + heartClicks * 10; // plus on clique, plus ça explose fort
+      const count = 40 + heartClicks * 10;
 
       for (let i = 0; i < count; i++) {
         const h = document.createElement('div');
@@ -280,7 +284,6 @@
         explosionZone.appendChild(h);
       }
 
-      // 17 clics → album
       if (heartClicks >= 17) {
         setTimeout(() => {
           window.location.href = "album-rhiannon.html";
