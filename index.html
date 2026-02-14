@@ -13,6 +13,7 @@
       --deep:     #e91e63;
       --light:    #ffb6c1;
       --rouge:    #ff2d55;
+      --corail:   #ff8da1;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -26,7 +27,7 @@
       position: relative;
     }
 
-    /* Cœurs qui tombent */
+    /* Pluie de cœurs en fond (activée après le oui) */
     .rain {
       position: fixed;
       inset: 0;
@@ -35,13 +36,13 @@
     }
     .heart-rain {
       position: absolute;
-      top: -50px;
-      font-size: 28px;
+      top: -60px;
+      font-size: 26px;
       animation: fall linear infinite;
-      filter: drop-shadow(0 4px 8px rgba(255,105,180,0.4));
+      filter: drop-shadow(0 5px 10px rgba(255,105,180,0.5));
     }
     @keyframes fall {
-      to { transform: translateY(110vh) rotate(720deg); }
+      to { transform: translateY(120vh) rotate(1080deg); }
     }
 
     /* Écran 1 – Demande */
@@ -52,8 +53,8 @@
       align-items: center;
       justify-content: center;
       z-index: 30;
-      background: rgba(255,240,245,0.95);
-      transition: opacity 0.9s;
+      background: rgba(255,240,245,0.94);
+      transition: opacity 0.9s ease;
     }
     .box {
       background: white;
@@ -64,14 +65,22 @@
       text-align: center;
       max-width: 420px;
     }
-    h1 { 
+    h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 5.8rem;
       color: var(--deep);
       margin-bottom: 10px;
     }
-    .question { font-size: 2.3rem; margin: 30px 0 50px; color: #555; }
-    .btns { display: flex; gap: 30px; justify-content: center; }
+    .question {
+      font-size: 2.3rem;
+      margin: 30px 0 50px;
+      color: #555;
+    }
+    .btns {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
     button {
       font-size: 2.4rem;
       padding: 18px 48px;
@@ -87,7 +96,11 @@
       transform-origin: center;
     }
     #yes-btn:hover { transform: scale(1.15); }
-    #no-btn { background: white; color: #444; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+    #no-btn {
+      background: white;
+      color: #444;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
     #no-btn:hover { background: var(--light); color: white; }
 
     /* Écran 2 – Célébration */
@@ -98,30 +111,29 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 40px 20px 30px;
+      padding: 40px 20px 50px;
       z-index: 20;
-      overflow-y: auto;
     }
 
     .big-title {
       font-family: 'Dancing Script', cursive;
-      font-size: 5.2rem;
+      font-size: 5.4rem;
       text-align: center;
       color: white;
-      text-shadow: 0 8px 25px rgba(0,0,0,0.35);
+      text-shadow: 0 10px 30px rgba(0,0,0,0.4);
       line-height: 0.95;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       z-index: 10;
     }
 
     .marquee {
       width: 100%;
-      max-width: 920px;
+      max-width: 960px;
       background: rgba(255,255,255,0.92);
       color: var(--deep);
       padding: 16px 0;
       border-radius: 50px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      box-shadow: 0 12px 45px rgba(0,0,0,0.2);
       overflow: hidden;
       white-space: nowrap;
       z-index: 12;
@@ -129,20 +141,73 @@
     .marquee-inner {
       display: inline-block;
       font-family: 'Dancing Script', cursive;
-      font-size: 2.35rem;
+      font-size: 2.4rem;
       padding-left: 100%;
-      animation: scroll 48s linear infinite;
+      animation: scroll 52s linear infinite;
     }
     @keyframes scroll { to { transform: translateX(-50%); } }
 
-    /* Ton image d’arbre */
-    .tree-image {
-      max-width: 90%;
-      max-height: 65vh;
-      object-fit: contain;
+    /* GROS CŒUR principal */
+    .heart-container {
+      position: relative;
+      width: 420px;
+      height: 420px;
       margin: 20px 0;
-      filter: drop-shadow(0 25px 50px rgba(139,0,86,0.35));
+      cursor: pointer;
       z-index: 8;
+      filter: drop-shadow(0 30px 70px rgba(233,30,99,0.45));
+    }
+
+    .heart-shape {
+      position: absolute;
+      inset: 0;
+      font-size: 380px;
+      line-height: 1;
+      text-align: center;
+      background: linear-gradient(135deg, #ff69b4, #e91e63);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulseHeart 3.2s infinite ease-in-out;
+    }
+
+    @keyframes pulseHeart {
+      0%,100% { transform: scale(1); }
+      50%     { transform: scale(1.06); }
+    }
+
+    .initials {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Dancing Script', cursive;
+      font-size: 9rem;
+      color: white;
+      text-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    /* Explosion de cœurs au clic */
+    .explosion {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 15;
+    }
+    .boom-heart {
+      position: absolute;
+      font-size: 32px;
+      left: 50%;
+      top: 50%;
+      opacity: 0;
+      animation: explode 1.2s forwards;
+      transform-origin: center;
+    }
+    @keyframes explode {
+      0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.2) rotate(0deg); }
+      60%  { opacity: 1; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--rot)); }
+      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.8) rotate(var(--rot)); }
     }
 
     /* Timer */
@@ -153,20 +218,20 @@
       border-radius: 30px;
       box-shadow: 0 15px 50px rgba(0,0,0,0.22);
       text-align: center;
-      min-width: 420px;
+      min-width: 440px;
       z-index: 12;
     }
     .timer-box .label {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       opacity: 0.85;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     #timer {
-      font-size: 2.35rem;
+      font-size: 2.4rem;
       font-weight: 700;
     }
 
-    /* Musique discrète */
+    /* Musique très discrète */
     #spotify {
       position: fixed;
       bottom: 15px;
@@ -212,12 +277,12 @@
       </div>
     </div>
 
-    <!-- Ton arbre ici -->
-    <img 
-      src="https://i.imgur.com/s9PbYmL.png" 
-      alt="Arbre d'amour pour Rhiannon" 
-      class="tree-image"
-    >
+    <!-- Le gros cœur cliquable -->
+    <div class="heart-container" id="heartClick">
+      <div class="heart-shape">❤️</div>
+      <div class="initials">E + R =</div>
+      <div class="explosion" id="explosion"></div>
+    </div>
 
     <div class="timer-box">
       <div class="label">Depuis notre premier soir…</div>
@@ -226,9 +291,9 @@
   </div>
 
   <script>
-    // Boutons
+    // Boutons Oui / Non
     let noClicks = 0;
-    const noTexts = ["Non","Tu es sûre ?","Réfléchis bien…","Vraiment ?","Allez dis oui !","Tu vas me briser le cœur","S’il te plaît ❤️","Pense à nous…","C’est la bonne réponse","Tu sais que tu en as envie","Rhiannon… ❤️"];
+    const noTexts = ["Non","Tu es sûre ?","Réfléchis bien…","Vraiment ?","Allez dis oui !","Tu vas me briser le cœur","S’il te plaît ❤️","Pense à nous…","C’est la bonne réponse","Rhiannon… ❤️"];
 
     document.getElementById('no-btn').addEventListener('click', () => {
       noClicks++;
@@ -249,31 +314,54 @@
       }, 800);
     });
 
+    // Explosion de cœurs au clic sur le gros cœur
+    document.getElementById('heartClick').addEventListener('click', () => {
+      const explosion = document.getElementById('explosion');
+      explosion.innerHTML = ''; // reset
+
+      for (let i = 0; i < 100; i++) {
+        const h = document.createElement('div');
+        h.className = 'boom-heart';
+        h.textContent = '❤️';
+        h.style.color = ['#ff69b4','#ffb6c1','#ff2d55','#e91e63','#ff8da1'][Math.floor(Math.random()*5)];
+
+        // direction aléatoire
+        const angle = Math.random() * 360;
+        const dist = 180 + Math.random() * 220;
+        const dx = Math.cos(angle * Math.PI / 180) * dist;
+        const dy = Math.sin(angle * Math.PI / 180) * dist;
+        const rot = (Math.random() - 0.5) * 720;
+
+        h.style.setProperty('--dx', dx + 'px');
+        h.style.setProperty('--dy', dy + 'px');
+        h.style.setProperty('--rot', rot + 'deg');
+        h.style.animationDelay = Math.random() * 0.4 + 's';
+
+        explosion.appendChild(h);
+      }
+    });
+
     // Pluie de cœurs
     function createRain() {
       const rain = document.getElementById('rain');
-      for (let i = 0; i < 90; i++) {
+      for (let i = 0; i < 80; i++) {
         const h = document.createElement('div');
         h.className = 'heart-rain';
         h.textContent = '❤️';
         h.style.left = Math.random() * 100 + 'vw';
-        h.style.fontSize = (18 + Math.random() * 22) + 'px';
-        h.style.animationDuration = (7 + Math.random() * 13) + 's';
+        h.style.fontSize = (16 + Math.random() * 24) + 'px';
+        h.style.animationDuration = (8 + Math.random() * 14) + 's';
         h.style.animationDelay = -Math.random() * 25 + 's';
-        h.style.opacity = 0.6 + Math.random() * 0.4;
         rain.appendChild(h);
       }
     }
 
-    // Timer depuis 17 mai 2025 22h
+    // Timer
     const start = new Date(2025, 4, 17, 22, 0, 0);
     function updateTimer() {
       const now = new Date();
       let diff = now - start;
-      if (diff < 0) {
-        document.getElementById('timer').textContent = "Bientôt notre anniversaire…";
-        return;
-      }
+      if (diff < 0) return;
 
       let s = Math.floor(diff / 1000) % 60;
       let m = Math.floor(diff / 60000) % 60;
@@ -283,8 +371,7 @@
       let months = now.getMonth() - start.getMonth() + 12 * (now.getFullYear() - start.getFullYear());
       if (now.getDate() < start.getDate()) months--;
 
-      let text = `${months} mois – ${d} jours – ${h} h ${m} min ${s} s`;
-      document.getElementById('timer').textContent = text;
+      document.getElementById('timer').textContent = `${months} mois – ${d} jours – ${h} h ${m} min ${s} s`;
     }
     function startTimer() {
       updateTimer();
