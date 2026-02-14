@@ -8,125 +8,75 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      overflow: hidden;
-      background: #000;
-      font-family: 'Dancing Script', cursive;
-      color: white;
-    }
-
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
+    body { margin:0; padding:0; height:100vh; overflow:hidden; background:#000; font-family:'Dancing Script', cursive; color:white; }
+    .slideshow-container { position:relative; width:100%; height:100%; }
     .slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
+      position:absolute;
+      inset:0;
+      opacity:0;
       transition: opacity 1.8s ease-in-out;
-      background: black;
+      background:black;
     }
-
-    .slide.active {
-      opacity: 1;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-
+    .slide.active { opacity:1; }
+    img { width:100%; height:100%; object-fit:contain; }
     .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
-      pointer-events: none;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 40px;
-      font-size: 3.8rem;
-      text-shadow: 0 4px 15px rgba(0,0,0,0.9);
-      z-index: 5;
-    }
-
-    /* Musique YouTube cachée */
-    #bg-music {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      opacity: 0;
-      pointer-events: none;
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      padding-bottom:60px;
+      font-size:4.2rem;
+      text-shadow:0 4px 20px rgba(0,0,0,0.9);
+      z-index:5;
     }
   </style>
 </head>
 <body>
 
-  <!-- Musique en boucle -->
-  <div id="bg-music">
-    <iframe 
-      width="1" 
-      height="1" 
-      src="https://www.youtube.com/embed/9kTyUFi3G1A?autoplay=1&loop=1&playlist=9kTyUFi3G1A&mute=0&controls=0&modestbranding=1&showinfo=0&rel=0" 
-      frameborder="0" 
-      allow="autoplay; encrypted-media" 
-      allowfullscreen>
-    </iframe>
-  </div>
+  <!-- MUSIQUE ALBUM : JVKE - pretty -->
+  <iframe id="album-music" width="0" height="0" frameborder="0" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/itsjvke/pretty&amp;color=%23ff5500&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe>
 
   <div class="slideshow-container" id="slideshow">
-
-    <!-- Les photos -->
-    <div class="slide"><img src="https://i.imgur.com/fbIZXwT.jpeg" alt="1"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/oeYPbvf.png" alt="2"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/x3gcmjD.png" alt="3"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/6J7TLTP.png" alt="4"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/2WIuRs2.png" alt="5"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/SGHBXwE.jpeg" alt="6"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/5zmQTE4.jpeg" alt="7"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/tMXf3pb.jpeg" alt="8"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/6h7yBRq.jpeg" alt="9"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/p6FDV9R.jpeg" alt="10"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/rd22WQu.png" alt="11"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/BggaAZQ.jpeg" alt="12"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/gZjjSJk.jpeg" alt="13"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/vxtKhzo.png" alt="14"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/4f2VMdA.jpeg" alt="15"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/1uMsc0N.jpeg" alt="16"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/sho58xT.png" alt="17"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/X3TXXqc.jpeg" alt="18"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/UhYQJHQ.jpeg" alt="19"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/ogEgtMp.jpeg" alt="20"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/oUSuplC.jpeg" alt="21"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/4LT5KNE.jpeg" alt="22"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/WoRgvif.png" alt="23"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/31mhCWB.jpeg" alt="24"><div class="overlay">E & R ❤️</div></div>
-    <div class="slide"><img src="https://i.imgur.com/rbQWciT.png" alt="25"><div class="overlay">E & R ❤️</div></div>
-
+    <div class="slide active"><img src="https://i.imgur.com/fbIZXwT.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/oeYPbvf.png"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/x3gcmjD.png"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/6J7TLTP.png"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/2WIuRs2.png"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/SGHBXwE.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/5zmQTE4.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/tMXf3pb.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/6h7yBRq.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/p6FDV9R.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/rd22WQu.png"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/BggaAZQ.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/gZjjSJk.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/vxtKhzo.png"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/4f2VMdA.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/1uMsc0N.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/sho58xT.png"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/X3TXXqc.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/UhYQJHQ.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/ogEgtMp.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/oUSuplC.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/4LT5KNE.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/WoRgvif.png"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/31mhCWB.jpeg"><div class="overlay">E + R ❤️</div></div>
+    <div class="slide"><img src="https://i.imgur.com/rbQWciT.png"><div class="overlay">E + R ❤️</div></div>
   </div>
 
   <script>
     const slides = document.querySelectorAll('.slide');
     let current = 0;
 
-    function showNext() {
+    function nextSlide() {
       slides[current].classList.remove('active');
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
     }
 
-    // Première image visible
-    slides[0].classList.add('active');
-
-    // Défilement automatique toutes les 5.5 secondes
-    setInterval(showNext, 5500);
+    setInterval(nextSlide, 4800); // défile toutes les 4.8 secondes
   </script>
 </body>
 </html>
