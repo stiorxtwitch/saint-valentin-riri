@@ -9,10 +9,10 @@
 
   <style>
     :root {
-      --rose:     #ff69b4;
-      --deep:     #e91e63;
-      --light:    #ffb6c1;
-      --rouge:    #ff2d55;
+      --rose: #ff69b4;
+      --deep: #e91e63;
+      --light: #ffb6c1;
+      --rouge: #ff2d55;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -26,12 +26,7 @@
       position: relative;
     }
 
-    .rain {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
+    .rain { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
     .heart-rain {
       position: absolute;
       top: -60px;
@@ -39,9 +34,7 @@
       animation: fall linear infinite;
       filter: drop-shadow(0 5px 10px rgba(255,105,180,0.5));
     }
-    @keyframes fall {
-      to { transform: translateY(120vh) rotate(1080deg); }
-    }
+    @keyframes fall { to { transform: translateY(120vh) rotate(1080deg); } }
 
     #proposal {
       position: fixed;
@@ -62,22 +55,9 @@
       text-align: center;
       max-width: 420px;
     }
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 5.8rem;
-      color: var(--deep);
-      margin-bottom: 10px;
-    }
-    .question {
-      font-size: 2.3rem;
-      margin: 30px 0 50px;
-      color: #555;
-    }
-    .btns {
-      display: flex;
-      gap: 30px;
-      justify-content: center;
-    }
+    h1 { font-family: 'Dancing Script', cursive; font-size: 5.8rem; color: var(--deep); margin-bottom: 10px; }
+    .question { font-size: 2.3rem; margin: 30px 0 50px; color: #555; }
+    .btns { display: flex; gap: 30px; justify-content: center; }
     button {
       font-size: 2.4rem;
       padding: 18px 48px;
@@ -87,17 +67,9 @@
       font-weight: 600;
       transition: all 0.45s cubic-bezier(0.68,-0.55,0.27,1.55);
     }
-    #yes-btn {
-      background: linear-gradient(45deg, var(--rose), var(--rouge));
-      color: white;
-      transform-origin: center;
-    }
+    #yes-btn { background: linear-gradient(45deg, var(--rose), var(--rouge)); color: white; transform-origin: center; }
     #yes-btn:hover { transform: scale(1.15); }
-    #no-btn {
-      background: white;
-      color: #444;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
+    #no-btn { background: white; color: #444; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
     #no-btn:hover { background: var(--light); color: white; }
 
     #celebration {
@@ -119,7 +91,6 @@
       text-shadow: 0 10px 30px rgba(0,0,0,0.4);
       line-height: 0.95;
       margin-bottom: 15px;
-      z-index: 10;
     }
 
     .marquee {
@@ -143,22 +114,23 @@
     }
     @keyframes scroll { to { transform: translateX(-50%); } }
 
+    /* CŒUR PARFAITEMENT CENTRÉ */
     .heart-container {
       position: relative;
-      width: 480px;
-      height: 480px;
-      margin: 20px auto;
+      width: 500px;
+      height: 500px;
+      margin: 30px auto;
       cursor: pointer;
       z-index: 8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       filter: drop-shadow(0 30px 70px rgba(233,30,99,0.45));
     }
 
     .heart-shape {
-      position: absolute;
-      inset: 0;
-      font-size: 440px;
+      font-size: 460px;
       line-height: 1;
-      text-align: center;
       background: linear-gradient(135deg, #ff69b4, #e91e63);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -167,20 +139,17 @@
 
     @keyframes pulseHeart {
       0%,100% { transform: scale(1); }
-      50%     { transform: scale(1.06); }
+      50% { transform: scale(1.08); }
     }
 
     .initials {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       font-family: 'Dancing Script', cursive;
-      font-size: 8.5rem;
+      font-size: 9.5rem;
       color: white;
-      text-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      text-shadow: 0 8px 25px rgba(0,0,0,0.7);
       pointer-events: none;
-      z-index: 9;
+      z-index: 10;
     }
 
     .explosion {
@@ -191,17 +160,17 @@
     }
     .boom-heart {
       position: absolute;
-      font-size: 32px;
+      font-size: 34px;
       left: 50%;
       top: 50%;
       opacity: 0;
-      animation: explode 1.3s forwards;
+      animation: explode 1.4s forwards;
       transform-origin: center;
     }
     @keyframes explode {
-      0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.1) rotate(0deg); }
-      60%  { opacity: 1; transform: translate(var(--dx), var(--dy)) scale(1.5) rotate(var(--rot)); }
-      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.7) rotate(var(--rot)); }
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(0.1) rotate(0deg); }
+      60% { opacity: 1; transform: translate(var(--dx), var(--dy)) scale(1.6) rotate(var(--rot)); }
+      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.6) rotate(var(--rot)); }
     }
 
     .timer-box {
@@ -214,20 +183,16 @@
       min-width: 440px;
       z-index: 12;
     }
-    .timer-box .label {
-      font-size: 1.4rem;
-      opacity: 0.85;
-      margin-bottom: 10px;
-    }
-    #timer {
-      font-size: 2.4rem;
-      font-weight: 700;
-    }
+    .timer-box .label { font-size: 1.4rem; opacity: 0.85; margin-bottom: 10px; }
+    #timer { font-size: 2.4rem; font-weight: 700; }
   </style>
 </head>
 <body>
 
   <div class="rain" id="rain"></div>
+
+  <!-- MUSIQUE PRINCIPALE : JVKE - her -->
+  <iframe id="main-music" width="0" height="0" frameborder="0" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/itsjvke/her-feat-john-michael-howell&amp;color=%23ff5500&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe>
 
   <!-- Écran 1 -->
   <div id="proposal">
@@ -271,7 +236,6 @@
       noClicks++;
       const btn = document.getElementById('no-btn');
       btn.textContent = noClicks < noTexts.length ? noTexts[noClicks] : "😢";
-
       const scale = Math.min(1.15 + noClicks * 0.45, 7);
       document.getElementById('yes-btn').style.transform = `scale(${scale})`;
     });
@@ -286,7 +250,7 @@
       }, 800);
     });
 
-    // Clic sur le cœur → explosion + compteur
+    // CŒUR + EXPLOSION (sans reset, on ajoute à chaque clic)
     let heartClicks = 0;
     const heart = document.getElementById('heartClick');
     const explosionZone = document.getElementById('explosion');
@@ -294,9 +258,7 @@
     heart.addEventListener('click', () => {
       heartClicks++;
 
-      // Plus on clique, plus il y a de cœurs qui explosent
-      const count = 40 + heartClicks * 8;
-      explosionZone.innerHTML = '';
+      const count = 40 + heartClicks * 10; // plus on clique, plus ça explose fort
 
       for (let i = 0; i < count; i++) {
         const h = document.createElement('div');
@@ -305,7 +267,7 @@
         h.style.color = ['#ff69b4','#ffb6c1','#ff2d55','#e91e63','#ff8da1'][Math.floor(Math.random()*5)];
 
         const angle = Math.random() * 360;
-        const dist = 140 + Math.random() * 280;
+        const dist = 150 + Math.random() * 300;
         const dx = Math.cos(angle * Math.PI / 180) * dist;
         const dy = Math.sin(angle * Math.PI / 180) * dist;
         const rot = (Math.random() - 0.5) * 900;
@@ -313,16 +275,16 @@
         h.style.setProperty('--dx', dx + 'px');
         h.style.setProperty('--dy', dy + 'px');
         h.style.setProperty('--rot', rot + 'deg');
-        h.style.animationDelay = Math.random() * 0.5 + 's';
+        h.style.animationDelay = Math.random() * 0.6 + 's';
 
         explosionZone.appendChild(h);
       }
 
-      // Après 17 clics → redirection vers l'album
+      // 17 clics → album
       if (heartClicks >= 17) {
         setTimeout(() => {
           window.location.href = "album-rhiannon.html";
-        }, 1200);
+        }, 800);
       }
     });
 
@@ -345,15 +307,12 @@
       const now = new Date();
       let diff = now - start;
       if (diff < 0) return;
-
       let s = Math.floor(diff / 1000) % 60;
       let m = Math.floor(diff / 60000) % 60;
       let h = Math.floor(diff / 3600000) % 24;
       let d = Math.floor(diff / 86400000);
-
       let months = now.getMonth() - start.getMonth() + 12 * (now.getFullYear() - start.getFullYear());
       if (now.getDate() < start.getDate()) months--;
-
       document.getElementById('timer').textContent = `${months} mois – ${d} jours – ${h} h ${m} min ${s} s`;
     }
     function startTimer() {
