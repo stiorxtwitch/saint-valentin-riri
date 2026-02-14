@@ -35,8 +35,10 @@
 </head>
 <body>
 
-  <!-- MUSIQUE ALBUM : JVKE - pretty -->
-  <iframe id="album-music" width="0" height="0" frameborder="0" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/itsjvke/pretty&amp;color=%23ff5500&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe>
+  <!-- MUSIQUE ALBUM : pretty de JVKE (minimal) -->
+  <iframe id="album-music" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1234567891&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+  </iframe>
 
   <div class="slideshow-container" id="slideshow">
     <div class="slide active"><img src="https://i.imgur.com/fbIZXwT.jpeg"><div class="overlay">E + R ❤️</div></div>
@@ -76,7 +78,7 @@
       slides[current].classList.add('active');
     }
 
-    setInterval(nextSlide, 4800); // défile toutes les 4.8 secondes
+    setInterval(nextSlide, 4800);
   </script>
 </body>
 </html>
